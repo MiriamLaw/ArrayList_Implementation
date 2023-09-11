@@ -2,23 +2,40 @@ package com.coderscampus.arraylist;
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
+	int elementCount = 0;
 
 	@Override
 	public boolean add(T item) {
-		// TODO Auto-generated method stub
-		return false;
+
+		if (elementCount == items.length) {
+			Object[] newItems = new Object[items.length * 2];
+
+			System.arraycopy(items, 0, newItems, 0, elementCount);
+
+			items = newItems;
+		}
+
+		items[elementCount] = item;
+
+		elementCount++;
+
+		return true;
 	}
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return elementCount;
 	}
 
 	@Override
 	public T get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index >= elementCount) {
+			throw new IndexOutOfBoundsException("Index is out of bounds");
+
+		}
+		@SuppressWarnings("unchecked")
+		T element = (T) items[index];
+		return element;
 	}
-	
+
 }
