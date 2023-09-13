@@ -1,8 +1,8 @@
 package com.coderscampus.arraylist;
 
 public class CustomArrayList<T> implements CustomList<T> {
-	Object[] items = new Object[10];
-	int elementCount = 0;
+	private Object[] items = new Object[10];
+	private int elementCount = 0;
 
 	@Override
 	public boolean add(T item) {
